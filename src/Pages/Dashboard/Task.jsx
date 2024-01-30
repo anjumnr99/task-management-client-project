@@ -5,6 +5,7 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import TaskCard from "./TaskCard";
 import { useQuery } from "@tanstack/react-query";
+import { Link } from "react-router-dom";
 
 const Task = () => {
 
@@ -44,45 +45,66 @@ const Task = () => {
         const taskDate = new Date(task.task_deadlines);
         // Compare task date with current date
         if (taskDate.toDateString() === currentDate) {
-           
+
             todayTasks.push(task);
         } else if (taskDate > date) {
-            
+
             upcomingTasks.push(task);
         } else {
-            
+
             completedTasks.push(task);
         }
     });
 
-
+    console.log(tasks.length !== 0 ? 'HAve task' : 'No tasks');
 
     return (
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 py-4">
-            
-            <div className="border bg-purple-50">
-                <h1 className="text-purple-800 text-2xl font-semibold border-b-2 border-purple-300 border-dashed w-fit mx-auto my-4 pb-2">Today</h1>
-                {
-                    todayTasks?.map((task, index) => <TaskCard key={index} refetch={refetch} index={index} task={task}></TaskCard>)
-                }
-            </div>
-            <div className="border  bg-green-50">
-                <h1 className="text-green-800 text-2xl font-semibold border-b-2 border-purple-300 border-dashed w-fit mx-auto my-4 pb-2">Completed</h1>
+        <>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-5 py-4">
+                <div >
+                    <h1 className="text-purple-800 text-2xl font-semibold border-b-2 border-purple-300 border-dashed w-fit mx-auto my-4 pb-2">Today</h1>
+                </div>
                 <div>
-                    {
-                        completedTasks?.map((task, index) => <TaskCard key={index} refetch={refetch} index={index} task={task}></TaskCard>)
-                    }
+                    <h1 className="text-green-800 text-2xl font-semibold border-b-2 border-purple-300 border-dashed w-fit mx-auto my-4 pb-2">Completed</h1>
+                </div>
+                <div>
+                    <h1 className="text-blue-800 text-2xl font-semibold border-b-2 border-purple-300 border-dashed w-fit mx-auto my-4 pb-2">Upcoming</h1>
                 </div>
             </div>
-            <div className="border  bg-blue-50">
-                <h1 className="text-blue-800 text-2xl font-semibold border-b-2 border-purple-300 border-dashed w-fit mx-auto my-4 pb-2">Upcoming</h1>
-                <div>
-                {
-                    upcomingTasks?.map((task,index)=><TaskCard key={index} refetch={refetch} index={index} task={task}></TaskCard>)
-                }
+            {
+                tasks.length !== 0 ? <div className="grid grid-cols-1 md:grid-cols-3 gap-5 py-4">
+
+                    <div className="border bg-purple-50">
+
+
+                        {
+
+                            todayTasks?.map((task, index) => <TaskCard key={index} refetch={refetch} index={index} task={task}></TaskCard>)
+                        }
+                    </div>
+                    <div className="border  bg-green-50">
+
+                        <div>
+                            {
+                                completedTasks?.map((task, index) => <TaskCard key={index} refetch={refetch} index={index} task={task}></TaskCard>)
+                            }
+                        </div>
+                    </div>
+                    <div className="border  bg-blue-50">
+
+                        <div>
+                            {
+                                upcomingTasks?.map((task, index) => <TaskCard key={index} refetch={refetch} index={index} task={task}></TaskCard>)
+                            }
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
+                    : <Link to='/dashboard/add-task' className="text-2xl text-gray-500 flex items-center justify-center min-h-[70vh]">
+                        Click to create a Task
+                    </Link>
+            }
+
+        </>
     );
 };
 

@@ -1,3 +1,5 @@
+
+
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
@@ -6,12 +8,12 @@ import { getAuth } from "firebase/auth";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyCkj0RWgzT2gENWUXT5wKf0xEJbCT_JJuU",
-  authDomain: "task-mate-auth-4f4f7.firebaseapp.com",
-  projectId: "task-mate-auth-4f4f7",
-  storageBucket: "task-mate-auth-4f4f7.appspot.com",
-  messagingSenderId: "360431704567",
-  appId: "1:360431704567:web:b04420da74f181ccfdf6f2"
+  apiKey: "AIzaSyAi7HtTq5PzZTu5QlMZVPe-c4ifelT2iKU",
+  authDomain: "task-management-auth-f1149.firebaseapp.com",
+  projectId: "task-management-auth-f1149",
+  storageBucket: "task-management-auth-f1149.appspot.com",
+  messagingSenderId: "330352603117",
+  appId: "1:330352603117:web:8dc9b463594eb0c2e981e4"
 };
 
 // Initialize Firebase
@@ -21,3 +23,4 @@ const auth = getAuth(app);
 
 
 export default auth;
+
