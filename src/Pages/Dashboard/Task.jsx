@@ -56,7 +56,7 @@ const Task = () => {
         }
     });
 
-    console.log(tasks.length !== 0 ? 'HAve task' : 'No tasks');
+    // console.log(tasks.length !== 0 ? 'HAve task' : 'No tasks');
 
     return (
         <>
@@ -72,7 +72,7 @@ const Task = () => {
                 </div>
             </div>
             {
-                tasks.length !== 0 ? <div className="grid grid-cols-1 md:grid-cols-3 gap-5 py-4">
+                tasks?.length !== 0 ? <div className="grid grid-cols-1 md:grid-cols-3 gap-5 py-4">
 
                     <div className="border bg-purple-50">
 
